@@ -8,14 +8,17 @@ function Search({setWeather}):ReactElement{
     async function fetchWeather(e){
         try{
             console.log(process.env.REACT_APP_API_KEY)
-            let res:Response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${50}&lon=${50}&appid=${process.env.REACT_APP_API_KEY}`)
-            let data = await res.json()
-            setWeather(data)
-            
+                if(search != ""){
+                    let res:Response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${search}&units=metric&appid=${process.env.REACT_APP_API_KEY}`)
+                    let data = await res.json()
+                    console.log(data)
+                    setWeather(data)
+                }else{
+                    setWeather({})
+                }
         }
-        catch(e){
-            console.log(e)
-            return null
+        catch(err){
+            console.log(err)
             
         }
         
