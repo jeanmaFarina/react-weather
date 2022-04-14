@@ -1,10 +1,10 @@
 import React,{Fragment, ReactElement,useEffect,useState} from 'react'
-
+import { useNavigate } from "react-router-dom";
 
 
 function Search({setWeather,setError}):ReactElement{
     const [search,setSearch] = useState("")
-
+    const navigate = useNavigate()
     async function fetchWeather(e){
         try{
             console.log(process.env.REACT_APP_API_KEY)
@@ -14,6 +14,10 @@ function Search({setWeather,setError}):ReactElement{
                         let data = await res.json()
                         console.log(data)
                         setWeather(data)
+                        navigate('/today')
+                    }
+                    else if(res.status == 401){
+                        setError("Unauthorized")
                     }
                     else{
                         setError("City not found")
