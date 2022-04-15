@@ -1,0 +1,20 @@
+.card{
+    border-radius: 3em;
+    width: 15em;
+    -webkit-box-shadow: 5px 10px 14px 12px rgba(0,0,0,0.32); 
+    box-shadow: 5px 10px 14px 12px rgba(0,0,0,0.32);
+    background: rgb(63,212,251);
+    background: radial-gradient(circle, rgba(63,212,251,1) 31%, rgba(153,252,70,1) 76%);
+    text-align: left;
+    padding: 1.5em;
+    margin: 2em;
+    margin-left: 1.2em;
+    margin-right: 1.2em;
+}
+
+h2{
+    text-align: center;
+}
+p{
+    padding: 0.3em;
+}

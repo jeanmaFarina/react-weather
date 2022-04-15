@@ -27,14 +27,14 @@ interface DataWeather{
 function App() {
   const [weather,setWeather] = useState<DataWeather>()
   const [error,setError] = useState<string>("")
-  
+  useEffect(()=>{setError("")},[weather])
   return (
     <div className="App">
       <Router>
         <h1>Weather app</h1>
         <Search setWeather={setWeather} setError={setError}/>
-        {
-          error
+        {error &&
+          <div class="error">{error}</div>
         }
         {weather &&
         

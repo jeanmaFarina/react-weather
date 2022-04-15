@@ -1,6 +1,6 @@
 import React,{Fragment, ReactElement,useEffect,useState} from 'react'
 import { useNavigate } from "react-router-dom";
-
+import './Search.css'
 
 function Search({setWeather,setError}):ReactElement{
     const [search,setSearch] = useState("")
@@ -18,9 +18,12 @@ function Search({setWeather,setError}):ReactElement{
                     }
                     else if(res.status == 401){
                         setError("Unauthorized")
+                        //setWeather({})
                     }
                     else{
+                        console.log("city not found")
                         setError("City not found")
+                        //setWeather({})
                     }
                 }else{
                     setWeather({})
@@ -34,10 +37,12 @@ function Search({setWeather,setError}):ReactElement{
     }
 
     return(<Fragment>
-        <input type="text" onChange={(e:React.ChangeEvent<HTMLInputElement>) =>{
-            setSearch((x)=>e.target.value)
-        } }/>
-        <button onClick={fetchWeather}>Submit</button>
+        <div className="column">
+            <input type="text" onChange={(e:React.ChangeEvent<HTMLInputElement>) =>{
+                setSearch((x)=>e.target.value)
+            } }/>
+            <button onClick={fetchWeather}>Submit</button>
+        </div>
     </Fragment>);
 }
 
